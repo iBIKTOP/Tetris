@@ -1,0 +1,10 @@
+#tetris {
+    color: black;
+    text-align: center;
+}
+#root{
+    text-align: center;
+}
+#root canvas{
+    border: 4px solid black;
+}
