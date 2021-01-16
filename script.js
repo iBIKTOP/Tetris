@@ -1,33 +1,35 @@
 import Game from './src/game.js';
-import View from './src/view.js';
+// import View from './src/view.js';
 
-const root = document.querySelector('#root');
+// const root = document.querySelector('#root');
 
 const game = new Game();
-const view = new View(root, 320, 640, 20, 10);
-
 window.game = game;
-window.view = view;
+console.log(game);
+// const view = new View(root, 320, 640, 20, 10);
 
-document.addEventListener('keydown', (event) => {
-    switch (event.keyCode) {
-        case 37: //left
-            game.muvePieceLeft();
-            view.render(game.getState());
-            break;
-        case 38: //up
-            game.rotatePiece();
-            view.render(game.getState());
-            break;
-        case 39: //right
-            game.muvePieceRight();
-            view.render(game.getState());
-            break;
-        case 40: //down
-            game.muvePieceDown();
-            view.render(game.getState());
-            break;
-    }
-});
+// window.game = game;
+// window.view = view;
 
-view.render(game.getState());
+// document.addEventListener('keydown', (event) => {
+//     switch (event.keyCode) {
+//         case 37: //left
+//             game.muvePieceLeft();
+//             view.render(game.getState());
+//             break;
+//         case 38: //up
+//             game.rotatePiece();
+//             view.render(game.getState());
+//             break;
+//         case 39: //right
+//             game.muvePieceRight();
+//             view.render(game.getState());
+//             break;
+//         case 40: //down
+//             game.muvePieceDown();
+//             view.render(game.getState());
+//             break;
+//     }
+// });
+
+// view.render(game.getState());
