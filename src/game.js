@@ -3,52 +3,52 @@ export default class Game {
     lines = 0;
     level = 0;
     playfield = [
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
     activePiece = {
         x: 0,
         y: 0,
         blocks: [
-            [0,1,0],
-            [1,1,1],
-            [0,0,0]
+            [0, 1, 0],
+            [1, 1, 1],
+            [0, 0, 0]
         ]
     };
 
     movePiaceLeft() {
         this.activePiece.x -= 1;
-        if(this.hasCollision()) this.activePiece.x += 1;
+        if (this.hasCollision()) this.activePiece.x += 1;
     }
     movePiaceRight() {
         this.activePiece.x += 1;
-        if(this.hasCollision()) this.activePiece.x -= 1;
+        if (this.hasCollision()) this.activePiece.x -= 1;
     }
     movePiaceDown() {
         this.activePiece.y += 1;
-        if(this.hasCollision()) {
+        if (this.hasCollision()) {
             this.activePiece.y -= 1;
             this.lockPiece();
         }
-        
+
     }
     // constructor() {
     //     this.points = {
@@ -194,23 +194,23 @@ export default class Game {
     //     }
     // }
 
-    // rotatePiece() {
-    //     const blocks = this.activePiece.blocks;
-    //     const length = blocks.length;
-    //     const temp = [];
-    //     for (let i = 0; i < length; i++) {
-    //         temp[i] = new Array(length).fill(0);
-    //     }
-    //     for (let y = 0; y < length; y++) {
-    //         for (let x = 0; x < length; x++) {
-    //             temp[x][y] = blocks[length - 1 - y][x];
-    //         }
-    //     }
-    //     this.activePiece.blocks = temp;
-    //     if (this.hasCollision()) {
-    //         this.activePiece.blocks = blocks;
-    //     }
-    // }
+    rotatePiece() {
+        const blocks = this.activePiece.blocks;
+        const length = blocks.length;
+        const temp = [];
+        for (let i = 0; i < length; i++) {
+            temp[i] = new Array(length).fill(0);
+        }
+        for (let y = 0; y < length; y++) {
+            for (let x = 0; x < length; x++) {
+                temp[x][y] = blocks[length - 1 - y][x];
+            }
+        }
+        this.activePiece.blocks = temp;
+        if (this.hasCollision()) {
+            this.activePiece.blocks = blocks;
+        }
+    }
 
     hasCollision() {//проверка выхода фигуры за пределы поля и столкновения 
         const playfield = this.playfield;
@@ -219,13 +219,13 @@ export default class Game {
             for (let x = 0; x < blocks[y].length; x++) {
                 if (blocks[y][x] &&//<-- есть ли в ячейке 1
                     ((playfield[pieseY + y] === undefined || playfield[pieseY + y][pieseX + x] === undefined) ||
-                    playfield[pieseY + y][pieseX + x])) {
-                        console.log("true");
-                        return true;
-                    }
+                        playfield[pieseY + y][pieseX + x])) {
+                    console.log("has collision");
+                    return true;
+                }
             }
         }
-        console.log("false");
+        console.log("hasn't collision");
         return false;
     }
     lockPiece() {//фиксируем наш блок в игровом поле
