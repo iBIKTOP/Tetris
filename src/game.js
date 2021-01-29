@@ -34,15 +34,15 @@ export default class Game {
         ]
     };
 
-    movePiaceLeft() {
+    movePieceLeft() {
         this.activePiece.x -= 1;
         if (this.hasCollision()) this.activePiece.x += 1;
     }
-    movePiaceRight() {
+    movePieceRight() {
         this.activePiece.x += 1;
         if (this.hasCollision()) this.activePiece.x -= 1;
     }
-    movePiaceDown() {
+    movePieceDown() {
         this.activePiece.y += 1;
         if (this.hasCollision()) {
             this.activePiece.y -= 1;
@@ -67,37 +67,37 @@ export default class Game {
     //     return Math.floor(this.lines * 0.1);
     // }
 
-    // getState() {
-    //     const playfield = this.createPlayfield();
+    getState() {
+        const playfield = this.createPlayfield();
 
-    //     //копируем поле во временный массив playfield
-    //     for (let y = 0; y < this.playfield.length; y++) {
-    //         playfield[y] = [];
-    //         for (let x = 0; x < this.playfield[y].length; x++) {
-    //             playfield[y][x] = this.playfield[y][x];
-    //         }
-    //     }
-    //     //переносим блок во временное поле
-    //     for (let y = 0; y < this.activePiece.blocks.length; y++) {
-    //         for (let x = 0; x < this.activePiece.blocks[y].length; x++) {
-    //             if (this.activePiece.blocks[y][x]) {
-    //                 playfield[this.activePiece.y + y][this.activePiece.x + x] = this.activePiece.blocks[y][x];
-    //             }
-    //         }
-    //     }
-    //     return playfield;
-    // }
-    // //функция для создания пустого игрового поля
-    // createPlayfield() {
-    //     const playfield = [];
-    //     for (let y = 0; y < 20; y++) {
-    //         playfield[y] = [];
-    //         for (let x = 0; x < 10; x++) {
-    //             playfield[y][x] = 0;
-    //         }
-    //     }
-    //     return playfield;
-    // }
+        //копируем поле во временный массив playfield
+        for (let y = 0; y < this.playfield.length; y++) {
+            playfield[y] = [];
+            for (let x = 0; x < this.playfield[y].length; x++) {
+                playfield[y][x] = this.playfield[y][x];
+            }
+        }
+        //переносим блок во временное поле
+        for (let y = 0; y < this.activePiece.blocks.length; y++) {
+            for (let x = 0; x < this.activePiece.blocks[y].length; x++) {
+                if (this.activePiece.blocks[y][x]) {
+                    playfield[this.activePiece.y + y][this.activePiece.x + x] = this.activePiece.blocks[y][x];
+                }
+            }
+        }
+        return playfield;
+    }
+    //функция для создания пустого игрового поля
+    createPlayfield() {
+        const playfield = [];
+        for (let y = 0; y < 20; y++) {
+            playfield[y] = [];
+            for (let x = 0; x < 10; x++) {
+                playfield[y][x] = 0;
+            }
+        }
+        return playfield;
+    }
 
     // //функция для создания одного из блоков TETRIS
     // createPiece() {
