@@ -8,7 +8,7 @@ export default class Game {
             '4': 1200
         };
         this.score = 0;
-        this.lines = 18;
+        this.lines = 0;
         this.playfield = this.createPlayfield();
         this.activePiece = this.createPiece();
         this.nextPiece = this.createPiece();
@@ -35,7 +35,7 @@ export default class Game {
                 }
             }
         }
-        return playfield;
+        return { playfield, score: this.score, level: this.level, nextPiece: this.nextPiece, lines: this.lines }
     }
     //функция для создания пустого игрового поля
     createPlayfield() {
