@@ -42,6 +42,7 @@ export default class View {
             for (let x = 0; x < line.length; x++) {
                 const block = line[x];
                 if (block) {
+                    //рисуем блок. принимает рассояние х и у в пх, размеры блока и цвет
                     this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, this.colors[block]);
                 }
             }
