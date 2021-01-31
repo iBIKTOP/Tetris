@@ -1,6 +1,9 @@
 export default class Game {
 
     constructor() {
+        this.reset();
+    }
+    reset() {
         this.points = {
             '1': 40,
             '2': 100,
@@ -9,6 +12,7 @@ export default class Game {
         };
         this.score = 0;
         this.lines = 0;
+        this.topOut = false;
         this.playfield = this.createPlayfield();
         this.activePiece = this.createPiece();
         this.nextPiece = this.createPiece();
@@ -35,8 +39,16 @@ export default class Game {
                 }
             }
         }
-        return { playfield, score: this.score, level: this.level, nextPiece: this.nextPiece, lines: this.lines }
+        return {
+            playfield,
+            score: this.score,
+            level: this.level,
+            nextPiece: this.nextPiece,
+            lines: this.lines,
+            isGameOver: this.topOut
+        }
     }
+
     //функция для создания пустого игрового поля
     createPlayfield() {
         const playfield = [];
@@ -132,6 +144,8 @@ export default class Game {
 
     //двигаем фигуру в низ
     movePieceDown() {
+        if (this.topOut) return;
+
         this.activePiece.y += 1;
         if (this.hasCollision()) {
             this.activePiece.y -= 1;
@@ -141,6 +155,9 @@ export default class Game {
             this.updateScore(clearLines);
 
             this.updatePieces();
+        }
+        if (this.hasCollision()) {
+            this.topOut = true;
         }
     }
 

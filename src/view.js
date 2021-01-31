@@ -61,7 +61,7 @@ export default class View {
         this.context.fillText('Press Enter to Start', this.width / 2, this.height / 2);
     }
     renderPauseScreen() {
-        this.context.fillStyle = 'rgba(0,0,0,0,0.75)';
+        this.context.fillStyle = 'rgba(0,0,0,0.75)';
         this.context.fillRect(0, 0, this.width, this.height)
 
         this.context.fillStyle = 'white';
@@ -79,6 +79,7 @@ export default class View {
         this.context.textBaseline = "middle";
         this.context.fillText('GAME OVER', this.width / 2, this.height / 2 - 48);
         this.context.fillText(`Score: ${score}`, this.width / 2, this.height / 2);
+        this.context.fillText(`Press Enter to Restart`, this.width / 2, this.height / 2 + 48);
     }
     renderPlayfield({ playfield }) {
         for (let y = 0; y < playfield.length; y++) {
